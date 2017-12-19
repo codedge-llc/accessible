@@ -9,7 +9,7 @@ Add accessible as a `mix.exs` dependency:
 ```elixir
 def deps do
   [
-    {:accessible, github: "codedge-llc/accessible"}
+    {:accessible, "~> 0.1.0"}
   ]
 end
 ```

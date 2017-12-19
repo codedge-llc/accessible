@@ -1,15 +1,9 @@
 defmodule Accessible do
-  @moduledoc """
-  Documentation for Accessible.
-  """
+  @moduledoc false
 
   defmacro __using__(_) do
     quote location: :keep do
       @behaviour Access
-
-      def thing do
-        Enum.reduce(%__MODULE__{}, fn({k, _v}) -> k end)
-      end
 
       def fetch(struct, key), do: Map.fetch(struct, key)
 
@@ -21,7 +15,11 @@ defmodule Accessible do
       end
 
       def put(struct, key, val) do
-        if Map.has_key?(struct, key), do: Map.put(struct, key, val), else: struct
+        if Map.has_key?(struct, key) do
+          Map.put(struct, key, val)
+        else
+          struct
+        end
       end
 
       def delete(struct, key) do
@@ -48,6 +46,9 @@ defmodule Accessible do
         updated = delete(struct, key)
         {val, updated}
       end
+
+      defoverridable [fetch: 2, get: 3, put: 3, delete: 2,
+                      get_and_update: 3, pop: 3]
     end
   end
 end
