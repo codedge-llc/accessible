@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/codedge-llc/accessible.svg?branch=master)](https://travis-ci.org/codedge-llc/accessible)
+[![Hex.pm](http://img.shields.io/hexpm/v/accessible.svg)](https://hex.pm/packages/accessible) [![Hex.pm](http://img.shields.io/hexpm/dt/accessible.svg)](https://hex.pm/packages/accessible)
+
 # Accessible
 
 Dead-simple Access behaviour for custom structs
