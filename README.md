@@ -1,21 +1,37 @@
 # Accessible
 
-**TODO: Add description**
+Dead-simple Access behaviour for custom structs
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `accessible` to your list of dependencies in `mix.exs`:
+Add accessible as a `mix.exs` dependency:
 
 ```elixir
 def deps do
   [
-    {:accessible, "~> 0.1.0"}
+    {:accessible, github: "codedge-llc/accessible"}
   ]
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/accessible](https://hexdocs.pm/accessible).
+## Usage
 
+Add `use Accessible` to your struct's module to enable `Access` behavior.
+
+```elixir
+defmodule YourModule
+  defstruct key: 1234, key_2: true
+  
+  use Accessible
+  
+  def your_function do
+  ...
+end
+```
+
+Your struct can now use all of the features of Access, including `struct[:key]` access syntax and Kernel nested get/update functions.
+
+```elixir
+iex> %YourModule{}[:key]
+1234
+```
