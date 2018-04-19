@@ -1,22 +1,23 @@
 defmodule Accessible.Mixfile do
   use Mix.Project
 
-  @version "0.1.0"
+  @version "0.2.0"
 
   def project do
     [
       app: :accessible,
+      name: "Accessible",
       version: @version,
       elixir: "~> 1.4",
-   	  elixirc_paths: elixirc_paths(Mix.env),
+      elixirc_paths: elixirc_paths(Mix.env()),
       source_url: "https://github.com/codedge-llc/accessible",
       description: description(),
       package: package(),
-      start_permanent: Mix.env == :prod,
+      start_permanent: Mix.env() == :prod,
       deps: deps(),
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
-        "coveralls": :test,
+        coveralls: :test,
         "coveralls.detail": :test,
         "coveralls.post": :test,
         "coveralls.html": :test
@@ -31,7 +32,7 @@ defmodule Accessible.Mixfile do
   end
 
   defp elixirc_paths(:test), do: ["lib", "test/support"]
-  defp elixirc_paths(_),     do: ["lib"]
+  defp elixirc_paths(_), do: ["lib"]
 
   def application do
     [
@@ -56,10 +57,10 @@ defmodule Accessible.Mixfile do
 
   defp package do
     [
-       files: ["lib", "mix.exs", "README*", "LICENSE*"],
-       maintainers: ["Henry Popp"],
-       licenses: ["MIT"],
-       links: %{"GitHub" => "https://github.com/codedge-llc/accessible"}
+      files: ["lib", "mix.exs", "README*", "LICENSE*"],
+      maintainers: ["Henry Popp"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/codedge-llc/accessible"}
     ]
   end
 end
