@@ -5,8 +5,10 @@ defmodule Accessible do
     quote location: :keep do
       @behaviour Access
 
+      @impl Access
       def fetch(struct, key), do: Map.fetch(struct, key)
 
+      @impl Access
       def get(struct, key, default \\ nil) do
         case struct do
           %{^key => value} -> value
@@ -26,6 +28,7 @@ defmodule Accessible do
         put(struct, key, %__MODULE__{}[key])
       end
 
+      @impl Access
       def get_and_update(struct, key, fun) when is_function(fun, 1) do
         current = get(struct, key)
 
@@ -41,6 +44,7 @@ defmodule Accessible do
         end
       end
 
+      @impl Access
       def pop(struct, key, default \\ nil) do
         val = get(struct, key, default)
         updated = delete(struct, key)
