@@ -8,7 +8,9 @@ defmodule Accessible do
       @impl Access
       def fetch(struct, key), do: Map.fetch(struct, key)
 
-      @impl Access
+      if Version.compare(System.version(), "1.7.0") == :lt do
+        @impl Access
+      end
       def get(struct, key, default \\ nil) do
         case struct do
           %{^key => value} -> value
