@@ -26,9 +26,10 @@ defmodule Accessible do
         end
       end
 
-#      def delete(struct, key) do
-#        put(struct, key, %__MODULE__{}[key])
-#      end
+      def delete(struct, key) do
+        #put(struct, key, %__MODULE__{}[key])
+        struct
+      end
 
       @impl Access
       def get_and_update(struct, key, fun) when is_function(fun, 1) do
