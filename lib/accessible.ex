@@ -27,8 +27,7 @@ defmodule Accessible do
       end
 
       def delete(struct, key) do
-        #put(struct, key, %__MODULE__{}[key])
-        struct
+        put(struct, key, %__MODULE__.__struct__[key])
       end
 
       @impl Access
