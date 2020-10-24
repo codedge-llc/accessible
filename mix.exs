@@ -45,7 +45,7 @@ defmodule Accessible.Mixfile do
       {:earmark, "~> 1.0", only: :dev},
       {:ex_doc, "~> 0.2", only: :dev},
       {:excoveralls, "~> 0.5", only: :test},
-      {:credo, "~> 0.8", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.0", only: [:dev, :test], runtime: false}
     ]
   end
 
