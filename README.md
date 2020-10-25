@@ -12,7 +12,7 @@ Add accessible as a `mix.exs` dependency:
 ```elixir
 def deps do
   [
-    {:accessible, "~> 0.2.1"}
+    {:accessible, "~> 0.3.0"}
   ]
 end
 ```
