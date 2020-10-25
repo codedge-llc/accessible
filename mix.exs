@@ -1,33 +1,33 @@
 defmodule Accessible.Mixfile do
   use Mix.Project
 
-  @version "0.2.1"
+  @version "0.3.0"
 
   def project do
     [
       app: :accessible,
-      name: "Accessible",
-      version: @version,
+      deps: deps(),
+      description: description(),
+      docs: [
+        main: "readme",
+        extras: [
+          "README.md"
+        ]
+      ],
       elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env()),
-      source_url: "https://github.com/codedge-llc/accessible",
-      description: description(),
+      name: "Accessible",
       package: package(),
-      start_permanent: Mix.env() == :prod,
-      deps: deps(),
-      test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
         coveralls: :test,
         "coveralls.detail": :test,
         "coveralls.post": :test,
         "coveralls.html": :test
       ],
-      docs: [
-        main: "readme",
-        extras: [
-          "README.md"
-        ]
-      ]
+      source_url: "https://github.com/codedge-llc/accessible",
+      start_permanent: Mix.env() == :prod,
+      test_coverage: [tool: ExCoveralls],
+      version: @version
     ]
   end
 
@@ -42,10 +42,10 @@ defmodule Accessible.Mixfile do
 
   defp deps do
     [
+      {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
       {:earmark, "~> 1.0", only: :dev},
-      {:ex_doc, "~> 0.2", only: :dev},
       {:excoveralls, "~> 0.5", only: :test},
-      {:credo, "~> 1.0", only: [:dev, :test], runtime: false}
+      {:ex_doc, "~> 0.2", only: :dev}
     ]
   end
 
@@ -58,9 +58,9 @@ defmodule Accessible.Mixfile do
   defp package do
     [
       files: ["lib", "mix.exs", "README*", "LICENSE*"],
-      maintainers: ["Henry Popp"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/codedge-llc/accessible"}
+      links: %{"GitHub" => "https://github.com/codedge-llc/accessible"},
+      maintainers: ["Henry Popp"]
     ]
   end
 end
