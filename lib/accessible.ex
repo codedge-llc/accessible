@@ -11,6 +11,7 @@ defmodule Accessible do
       if Version.compare(System.version(), "1.7.0") == :lt do
         @impl Access
       end
+
       def get(struct, key, default \\ nil) do
         case struct do
           %{^key => value} -> value
@@ -27,7 +28,7 @@ defmodule Accessible do
       end
 
       def delete(struct, key) do
-        put(struct, key, %__MODULE__{}[key])
+        put(struct, key, struct(__MODULE__)[key])
       end
 
       @impl Access
@@ -42,7 +43,9 @@ defmodule Accessible do
             {current, delete(struct, key)}
 
           other ->
-            raise "the given function must return a two-element tuple or :pop, got: #{inspect(other)}"
+            raise "the given function must return a two-element tuple or :pop, got: #{
+                    inspect(other)
+                  }"
         end
       end
 
@@ -53,8 +56,7 @@ defmodule Accessible do
         {val, updated}
       end
 
-      defoverridable [fetch: 2, get: 3, put: 3, delete: 2,
-                      get_and_update: 3, pop: 3]
+      defoverridable fetch: 2, get: 3, put: 3, delete: 2, get_and_update: 3, pop: 3
     end
   end
 end
