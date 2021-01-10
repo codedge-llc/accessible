@@ -15,6 +15,7 @@ defmodule Accessible.Mixfile do
         ]
       ],
       elixir: "~> 1.4",
+      elixirc_options: [warnings_as_errors: true],
       elixirc_paths: elixirc_paths(Mix.env()),
       name: "Accessible",
       package: package(),
