@@ -8,9 +8,13 @@
 
 # v0.2.1
 
+**Fixed**
+
 - Removed compiler warnings for Elixir v1.7
 
 # v0.2.0
+
+**Fixed**
 
 - `@impl Access` tags added to remove compile warnings
 
