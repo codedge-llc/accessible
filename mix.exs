@@ -8,12 +8,8 @@ defmodule Accessible.Mixfile do
       app: :accessible,
       deps: deps(),
       description: description(),
-      docs: [
-        main: "readme",
-        extras: [
-          "README.md"
-        ]
-      ],
+      dialyzer: dialyzer(),
+      docs: docs(),
       elixir: "~> 1.4",
       elixirc_options: [warnings_as_errors: true],
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -44,9 +40,10 @@ defmodule Accessible.Mixfile do
   defp deps do
     [
       {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
       {:earmark, "~> 1.0", only: :dev},
       {:excoveralls, "~> 0.5", only: :test},
-      {:ex_doc, "~> 0.2", only: :dev}
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 
@@ -54,6 +51,21 @@ defmodule Accessible.Mixfile do
     """
     Dead-simple Access behaviour for custom structs
     """
+  end
+
+  defp docs do
+    [
+      main: "readme",
+      extras: [
+        "README.md"
+      ]
+    ]
+  end
+
+  defp dialyzer do
+    [
+      plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+    ]
   end
 
   defp package do
