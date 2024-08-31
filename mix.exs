@@ -10,7 +10,7 @@ defmodule Accessible.Mixfile do
       description: description(),
       dialyzer: dialyzer(),
       docs: docs(),
-      elixir: "~> 1.4",
+      elixir: "~> 1.13",
       elixirc_options: [warnings_as_errors: true],
       elixirc_paths: elixirc_paths(Mix.env()),
       name: "Accessible",

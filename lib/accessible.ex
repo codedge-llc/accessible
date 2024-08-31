@@ -6,11 +6,7 @@ defmodule Accessible do
       @behaviour Access
 
       @impl Access
-      def fetch(struct, key), do: Map.fetch(struct, key)
-
-      if Version.compare(System.version(), "1.7.0") == :lt do
-        @impl Access
-      end
+      defdelegate fetch(struct, key), to: Map
 
       def get(struct, key, default \\ nil) do
         case struct do
