@@ -5,6 +5,10 @@ defmodule AccessibleTest do
   alias Accessible.{TestModule, TestModuleEnforceKeys}
 
   describe "normal struct" do
+    test "enables map accessor syntax" do
+      assert %TestModule{}[:key_1] == 1234
+    end
+
     test "fetch/2 returns value for given key" do
       assert Access.fetch(%TestModule{}, :key_1) == {:ok, 1234}
     end
@@ -23,6 +27,12 @@ defmodule AccessibleTest do
   end
 
   describe "struct with enforce keys" do
+    test "enables map accessor syntax" do
+      data = %TestModuleEnforceKeys{key_1: :example, key_2: 1234}
+      assert data[:key_1] == :example
+      assert data[:key_2] == 1234
+    end
+
     test "fetch/2 returns value for given key" do
       data = %TestModuleEnforceKeys{key_1: :example, key_2: 1234}
       assert Access.fetch(data, :key_1) == {:ok, :example}
