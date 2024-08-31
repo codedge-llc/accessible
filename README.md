@@ -47,7 +47,7 @@ iex> %YourModule{}[:key]
 
 ### Testing
 
-Unit tests can be run with `mix test` or `mix coveralls.html`.
+Unit tests can be run with `mix test`.
 
 ### Formatting
 
@@ -63,4 +63,4 @@ Git commit subjects use the [Karma style](http://karma-runner.github.io/5.0/dev/
 
 Copyright (c) 2017-2024 Codedge LLC (https://www.codedge.io/)
 
-This library is MIT licensed. See the [LICENSE](https://github.com/codedge-llc/accessible/blob/master/LICENSE.md) for details.
+This library is MIT licensed. See the [LICENSE](https://github.com/codedge-llc/accessible/blob/master/LICENSE) for details.

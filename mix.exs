@@ -15,15 +15,8 @@ defmodule Accessible.Mixfile do
       elixirc_paths: elixirc_paths(Mix.env()),
       name: "Accessible",
       package: package(),
-      preferred_cli_env: [
-        coveralls: :test,
-        "coveralls.detail": :test,
-        "coveralls.post": :test,
-        "coveralls.html": :test
-      ],
       source_url: "https://github.com/codedge-llc/accessible",
       start_permanent: Mix.env() == :prod,
-      test_coverage: [tool: ExCoveralls],
       version: @version
     ]
   end
@@ -41,8 +34,6 @@ defmodule Accessible.Mixfile do
     [
       {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
-      {:earmark, "~> 1.0", only: :dev},
-      {:excoveralls, "~> 0.5", only: :test},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
