@@ -1,13 +1,13 @@
 defmodule Accessible.Mixfile do
   use Mix.Project
 
+  @source_url "https://github.com/codedge-llc/accessible"
   @version "0.3.0"
 
   def project do
     [
       app: :accessible,
       deps: deps(),
-      description: description(),
       dialyzer: dialyzer(),
       docs: docs(),
       elixir: "~> 1.13",
@@ -15,7 +15,6 @@ defmodule Accessible.Mixfile do
       elixirc_paths: elixirc_paths(Mix.env()),
       name: "Accessible",
       package: package(),
-      source_url: "https://github.com/codedge-llc/accessible",
       start_permanent: Mix.env() == :prod,
       test_coverage: test_coverage(),
       version: @version
@@ -39,18 +38,18 @@ defmodule Accessible.Mixfile do
     ]
   end
 
-  defp description do
-    """
-    Dead-simple Access behaviour for custom structs
-    """
-  end
-
   defp docs do
     [
-      main: "readme",
+      api_reference: false,
       extras: [
-        "README.md"
-      ]
+        "CHANGELOG.md",
+        LICENSE: [title: "License"],
+        "README.md": [title: "Overview"]
+      ],
+      formatters: ["html"],
+      main: "readme",
+      source_ref: "v#{@version}",
+      source_url: @source_url
     ]
   end
 
@@ -62,9 +61,14 @@ defmodule Accessible.Mixfile do
 
   defp package do
     [
-      files: ["lib", "mix.exs", "README*", "LICENSE*"],
+      description: "Dead-simple Access behaviour for custom structs.",
+      files: ["lib", "mix.exs", "README*", "LICENSE*", "CHANGELOG*"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/codedge-llc/accessible"},
+      links: %{
+        "Changelog" => "https://hexdocs.pm/accessible/changelog.html",
+        "GitHub" => "https://github.com/codedge-llc/accessible",
+        "Sponsor" => "https://github.com/sponsors/codedge-llc"
+      },
       maintainers: ["Henry Popp"]
     ]
   end
