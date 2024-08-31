@@ -31,8 +31,7 @@ defmodule YourModule
 
   use Accessible
 
-  def your_function do
-  ...
+  # ...
 end
 ```
 
