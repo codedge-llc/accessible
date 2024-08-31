@@ -24,9 +24,9 @@ Add `use Accessible` to your struct's module to enable `Access` behavior.
 ```elixir
 defmodule YourModule
   defstruct key: 1234, key_2: true
-  
+
   use Accessible
-  
+
   def your_function do
   ...
 end
