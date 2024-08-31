@@ -5,6 +5,10 @@ defmodule Accessible do
     quote location: :keep do
       @behaviour Access
 
+      def delete(struct, key) do
+        put(struct, key, struct(__MODULE__)[key])
+      end
+
       @impl Access
       defdelegate fetch(struct, key), to: Map
 
@@ -13,18 +17,6 @@ defmodule Accessible do
           %{^key => value} -> value
           _else -> default
         end
-      end
-
-      def put(struct, key, val) do
-        if Map.has_key?(struct, key) do
-          Map.put(struct, key, val)
-        else
-          struct
-        end
-      end
-
-      def delete(struct, key) do
-        put(struct, key, struct(__MODULE__)[key])
       end
 
       @impl Access
@@ -50,12 +42,20 @@ defmodule Accessible do
         {val, updated}
       end
 
-      defoverridable fetch: 2,
+      def put(struct, key, val) do
+        if Map.has_key?(struct, key) do
+          Map.put(struct, key, val)
+        else
+          struct
+        end
+      end
+
+      defoverridable delete: 2,
+                     fetch: 2,
                      get: 3,
-                     put: 3,
-                     delete: 2,
                      get_and_update: 3,
-                     pop: 3
+                     pop: 3,
+                     put: 3
     end
   end
 end

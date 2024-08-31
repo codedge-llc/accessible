@@ -17,6 +17,7 @@ defmodule Accessible.Mixfile do
       package: package(),
       source_url: "https://github.com/codedge-llc/accessible",
       start_permanent: Mix.env() == :prod,
+      test_coverage: test_coverage(),
       version: @version
     ]
   end
@@ -65,6 +66,16 @@ defmodule Accessible.Mixfile do
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/codedge-llc/accessible"},
       maintainers: ["Henry Popp"]
+    ]
+  end
+
+  defp test_coverage do
+    [
+      ignore_modules: [
+        Accessible.TestModule,
+        Accessible.TestModuleEnforceKeys
+      ],
+      summary: [threshold: 70]
     ]
   end
 end
